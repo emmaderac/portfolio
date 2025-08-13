@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portafolio de Eric Madera (En Proceso)</title>
   <link rel="stylesheet" href="misEstilos.css" />
 </head>
+
 <body>
-    <!-- Glow BOLBS -->
-    <div class="blur-bg blur-blue"></div>
-    <div class="blur-bg blur-purple"></div>
-    <div class="blur-bg blur-pink"></div>
-    <div class="blur-bg blur-green"></div>
-    <div class="blur-bg blur-teal"></div>
-    <div class="blur-bg blur-sky-blue"></div>
+  <!-- Glow BOLBS -->
+  <div class="blur-bg blur-blue"></div>
+  <div class="blur-bg blur-purple"></div>
+  <div class="blur-bg blur-pink"></div>
+  <div class="blur-bg blur-green"></div>
+  <div class="blur-bg blur-teal"></div>
+  <div class="blur-bg blur-sky-blue"></div>
 
   <!-- INICIO -->
   <header>
@@ -21,23 +23,26 @@
       <img src="IMG_4171.JPG" alt="Foto de Eric Madera" />
       <h1>Eric Mariano Madera Cataño (Portafolio En Proceso)</h1>
       <p>Desarrollador Web | Diseñador Digital | Modelador 3D</p>
-      
+
       <div class="botones">
         <a href="#portafolio">Ver portafolio</a>
         <a href="#contacto">Contactar</a>
       </div>
     </div>
-    
+
   </header>
 
   <!-- SOBRE MÍ -->
   <section id="sobre-mi">
     <h2>Sobre mí</h2>
     <p>
-      Soy un Ingeniero en Tecnologías de la Información especializado en entornos virtuales y negocios digitales. Me apasiona el desarrollo web, la creación de contenido visual y el diseño de experiencias de usuario intuitivas y atractivas. Busco crecer como profesional en áreas de marketing digital, diseño web y tecnologías interactivas.
+      Soy un Ingeniero en Tecnologías de la Información especializado en entornos virtuales y negocios digitales. Me
+      apasiona el desarrollo web, la creación de contenido visual y el diseño de experiencias de usuario intuitivas y
+      atractivas. Busco crecer como profesional en áreas de marketing digital, diseño web y tecnologías interactivas.
     </p>
     <p>
-      También tengo experiencia en modelado 3D, edición de video, animación y herramientas de diseño como Adobe Creative Cloud y Autodesk Maya. Mi enfoque combina creatividad, tecnología y comunicación.
+      También tengo experiencia en modelado 3D, edición de video, animación y herramientas de diseño como Adobe Creative
+      Cloud y Autodesk Maya. Mi enfoque combina creatividad, tecnología y comunicación.
     </p>
     <a href="assets/Madera-CV.pdf" download>Descargar CV</a>
   </section>
@@ -46,6 +51,7 @@
   <section id="portafolio">
     <h2>Portafolio</h2>
     <div class="filtros">
+      <button id="mostrar-todos">Mostrar todos</button>
       <button>Web</button>
       <button>Video</button>
       <button>UX/UI</button>
@@ -53,17 +59,96 @@
       <button>Modelado 3D</button>
       <button>Pixel Art</button>
       <button>Impresión 3D</button>
-      
     </div>
 
+    <script>
+      // Filtrado por categorías y estilo activo
+      document.querySelectorAll('.filtros button:not(#mostrar-todos)').forEach(btn => {
+        btn.addEventListener('click', function () {
+          // Estilo activo
+          document.querySelectorAll('.filtros button').forEach(b => b.classList.remove('activo'));
+          btn.classList.add('activo');
+
+          // Filtrado
+          const categoria = btn.textContent.toLowerCase().replace(/\s/g, '');
+          document.querySelectorAll('.proyecto').forEach(card => {
+            if (card.classList.contains(categoria)) {
+              card.style.display = '';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Botón para mostrar todas las tarjetas
+      document.getElementById('mostrar-todos').addEventListener('click', function () {
+        document.querySelectorAll('.filtros button').forEach(b => b.classList.remove('activo'));
+        this.classList.add('activo');
+        document.querySelectorAll('.proyecto').forEach(card => {
+          card.style.display = '';
+        });
+      });
+    </script>
+
     <div class="galeria-proyectos">
-      <div class="proyecto">Proyecto Aetherlands – App AR + Web + Modelado 3D</div>
-      <div class="proyecto">Proyecto Debuk – App AR + Web + Unity</div>
-      <div class="proyecto">Proyecto Dogma – Videojuego Mascota Virtual + Marketing</div>
-      <div class="proyecto">Proyecto Shattered Shadow – Videojuego 3D de Terror</div>
-      <div class="proyecto">El Mirador – Diseño de Logotipo</div>
-      <div class="proyecto">Impresiones 3D – Modelado y desarrollo de marca</div>
+      <div class="proyecto web ar modelado3d">
+        <img src="IMG_4171.JPG" alt="Aetherlands" />
+        <div class="info">
+          <h3>Proyecto Aetherlands</h3>
+          <span class="etiqueta">Web</span>
+          <span class="etiqueta">AR</span>
+          <span class="etiqueta">Modelado 3D</span>
+          <p>App AR + Web + Modelado 3D</p>
+        </div>
+      </div>
+      <div class="proyecto web ar unity">
+        <img src="assets/debuk.jpg" alt="Debuk" />
+        <div class="info">
+          <h3>Proyecto Debuk</h3>
+          <span class="etiqueta">Web</span>
+          <span class="etiqueta">AR</span>
+          <span class="etiqueta">Unity</span>
+          <p>App AR + Web + Unity</p>
+        </div>
+      </div>
+      <div class="proyecto videojuegos marketing">
+        <img src="assets/dogma.jpg" alt="Dogma" />
+        <div class="info">
+          <h3>Proyecto Dogma</h3>
+          <span class="etiqueta">Videojuegos</span>
+          <span class="etiqueta">Marketing</span>
+          <p>Videojuego Mascota Virtual + Marketing</p>
+        </div>
+      </div>
+      <div class="proyecto videojuegos modelado3d">
+        <img src="assets/shattered-shadow.jpg" alt="Shattered Shadow" />
+        <div class="info">
+          <h3>Proyecto Shattered Shadow</h3>
+          <span class="etiqueta">Videojuegos</span>
+          <span class="etiqueta">Modelado 3D</span>
+          <p>Videojuego 3D de Terror</p>
+        </div>
+      </div>
+      <div class="proyecto uxui">
+        <img src="assets/el-mirador.jpg" alt="El Mirador" />
+        <div class="info">
+          <h3>El Mirador</h3>
+          <span class="etiqueta">UX/UI</span>
+          <p>Diseño de Logotipo</p>
+        </div>
+      </div>
+      <div class="proyecto modelado3d impresion3d">
+        <img src="assets/impresiones3d.jpg" alt="Impresiones 3D" />
+        <div class="info">
+          <h3>Impresiones 3D</h3>
+          <span class="etiqueta">Modelado 3D</span>
+          <span class="etiqueta">Impresión 3D</span>
+          <p>Modelado y desarrollo de marca</p>
+        </div>
+      </div>
     </div>
+
   </section>
 
   <!-- CERTIFICACIONES -->
@@ -91,11 +176,12 @@
   <footer>
     <p>© 2025 Eric Madera Cataño. Todos los derechos reservados.</p>
     <p>
-      <a href="mailto:emmaderac@gmail.com">emmaderac@gmail.com</a> | 
-      <a href="https://www.linkedin.com/in/emmaderac/" target="_blank">LinkedIn</a> | 
+      <a href="mailto:emmaderac@gmail.com">emmaderac@gmail.com</a> |
+      <a href="https://www.linkedin.com/in/emmaderac/" target="_blank">LinkedIn</a> |
       <a href="https://moonewave.artstation.com" target="_blank">ArtStation</a>
     </p>
   </footer>
 
 </body>
+
 </html>
