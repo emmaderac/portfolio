@@ -141,6 +141,7 @@ header p {
   object-fit: cover;
   border-radius: 12px;
   display: block;
+  background-color: #282828;
 }
 
 .proyecto-content {
